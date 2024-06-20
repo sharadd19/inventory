@@ -1,0 +1,23 @@
+extends layout 
+
+block content
+  
+  div(class="wrapper")
+    div(class="links")
+      a(href="/inventory" class="header") Home
+      a(href="/inventory/categories" class="header") Categories
+      a(href="/inventory/items" class="header") Items
+    h1 Categories
+
+    a(href='/inventory/category/create' class="button") Create Category
+
+    if categoryList.length
+      div(class="grid")
+        each category in categoryList
+          div(class="card")
+            a(href=category.url) #{category.name}
+            p #{category.description}
+    else
+      p There are no categories. Please create one.
+  
+  

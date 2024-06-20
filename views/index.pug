@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  div(class="container")
+    h1 Welcome to #[em The Inventory]
+    h2 The Inventory has the following:
+    div(class="button-group")
+      a(href='/inventory/categories', class='button') #[strong View Categories:] !{categoryListCount} 
+      a(href='/inventory/items', class='button') #[strong View Items:] !{itemListCount} 

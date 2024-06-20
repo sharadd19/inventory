@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  div(class="wrapper")
+    div(class="links")
+      a(href="/inventory" class="header") Home
+      a(href="/inventory/categories" class="header") Categories
+      a(href="/inventory/items") Items
+    h1 #{item.name}
+    p #[strong Category:] #{item.category.name}
+    p #[strong Description:] #{item.description}
+    p #[strong Price:] £#{item.price}
+    p #[strong Stock:] #{item.stock}
+    
+    div(class="button-group")
+      a(href=item.url+"/update" class="button") Update Item  
+      a(href=item.url+"/delete" class="button") Delete Item
+    

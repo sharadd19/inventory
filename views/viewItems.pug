@@ -1,0 +1,25 @@
+extends layout 
+
+block content
+  div(class="wrapper")
+    div(class="links")
+      a(href="/inventory" class="header") Home
+      a(href="/inventory/categories" class="header") Categories
+      a(href="/inventory/items" class="header") Items
+
+
+    h1 All Items
+    a(href='/inventory/item/create' class="button") Create Item
+    if itemList.length
+      div(class="grid")
+        each item in itemList
+          div(class="card")
+            a(href=item.url) #{item.name}
+            p #{item.description}
+            p Price: £#{item.price}
+            p Stock: #{item.stock}
+
+    else
+      p There are no items. Please create one.
+  
+  

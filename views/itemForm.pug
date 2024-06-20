@@ -1,0 +1,61 @@
+extends layout
+
+block content
+
+  
+  
+  #{url = undefined === item ? "/inventory/item/save" : item.url+"/save"}
+  if categoryExists
+    if undefined === item
+      #{backUrl = "/inventory/category/"+categoryExists._id}
+  else if undefined === item 
+    #{backUrl = "/inventory/items"}
+  else if item
+    #{backUrl = item.url}
+  
+
+  div(class="wrapper")
+    div(class="links")
+      a(href="/inventory" class="header") Home
+      a(href="/inventory/categories" class="header") Categories
+      a(href="/inventory/items" class="header") Items
+      
+    
+    form(method='POST' action=url)
+      h1 #{title}
+      div.form-group
+        div(class="item")
+          label(for='name') #[strong Item]:
+          input#name.form-control(type='text' name='name' required value=(undefined === item ? '' : item.name) ) 
+        div(class="description") 
+          label(for="description") #[strong Description]: 
+          textarea#description.form-control(name="description", rows=10, cols=30 required)=(undefined === item ? '' : item.description)
+        div(class="category")
+          label(for="category") #[strong Category]: 
+          select#category.form-control(name='category' required)
+            if categoryExists
+              option(value=categoryExists._id selected) #{categoryExists.name}
+            else
+              option(value=categoryExists selected) --Please select a category--
+              for category in categories
+                if item
+                  if category._id.toString()===item.category._id.toString()
+                    option(value=category._id selected) #{category.name}
+                  else
+                    option(value=category._id) #{category.name}
+                else  
+                  option(value=category._id) #{category.name}
+        div(class="price")
+          label(for="price") #[strong Price]: 
+          input#price.form-control(type='number' name='price' required value=(undefined === item ? '' : item.price) ) 
+        div(class="stock")
+          label(for="stock") #[strong Stock]: 
+          input#stock.form-control(type='number' name='stock' required value=(undefined === item ? '' : item.stock) ) 
+        div.button-group
+          button(type='submit' class="button") Add Item
+          a(href=backUrl) Cancel
+
+    if errors
+      ul
+        for error in errors
+          li!= error.msg

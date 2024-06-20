@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  div.wrapper
+    div(class="links")
+      a(href="/inventory" class="header") Home
+      a(href="/inventory/categories" class="header") Categories
+      a(href="/inventory/items") Items
+    div.delete
+      h1 #{title}: #{category.name}
+      p= category.description
+      
+      if itemList.length
+          p #[strong Deleting the Category will delete the following items:]
+          div.itemList
+            each item in itemList
+              a(href=item.url) #{item.name}
+
+      p #[strong Do you really want to delete this category?   ]
+        form(method='POST' action=category.url+"/delete")
+          div.form-group
+            input#categoryid.form-control(type='hidden', name='categoryid', value=category._id )
+          div.button-group
+            button(type='submit' class="button") Delete
+            a(href="/inventory/categories") Cancel
+
+
+  
+    

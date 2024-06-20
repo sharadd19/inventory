@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@100..900&family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+
+body {
+  padding: 50px;
+  font-family: "Catamaran";
+}
+
+a {
+  color: #00b7ff;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  font-weight: bold;
+  text-decoration: none;
+  color: #287082;
+}
+a:hover {
+  color: black;
+}
+a:active {
+  text-decoration: underline;
+
+}
+.button {
+  width: max-content;
+  text-decoration: none;
+  background: #287082;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  width: 500px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.create {
+  display: flex;
+  align-items: center;
+  justify-items: space-between;
+  gap: 10px;
+}
+
+h1 {
+  margin-bottom: 0px;
+}
+
+.links{
+  display:flex;
+  gap:10px
+}
+
+.itemList {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px
+}
+
+.delete {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0px
+}
+
+.item, .description, .price, .stock, .category{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 10px
+}
+
+input, textarea, select {
+  border-radius: 10px;
+  width: 100%;
+  padding: 6px 10px;
+  box-sizing: border-box;
+  border: 1px solid grey;
+}
+@media (width <= 550px) {
+  .grid {
+     grid-template-columns: 1fr;
+  }
+  .card{
+    width: auto;
+  }
+}

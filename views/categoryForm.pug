@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  #{url = undefined === category ? "/inventory/category/save" : category.url+"/save"}
+  #{backUrl = undefined === category ? "/inventory/categories" : category.url }
+
+  div.wrapper
+    div(class="links")
+      a(href="/inventory" class="header") Home
+      a(href="/inventory/categories" class="header") Categories
+      a(href="/inventory/items") Items
+    form(method='POST' action=url)
+      h1 #{title}
+      div.form-group
+        div.category
+          label(for='name') #[strong Category]:
+          input#name.form-control(type='text', placeholder='Meat, Vegetables etc.' name='name' required value=(undefined === category ? '' : category.name) ) 
+        div.description
+          label(for="description") #[strong Description]: 
+          textarea#description.form-control(name="description", rows=10, cols=30 required)=(undefined === category ? '' : category.description)
+        div.button-group
+          button(type='submit' class="button") Add Category
+          a(href=backUrl) Cancel 
+    if errors
+      ul
+        for error in errors
+          li!= error.msg

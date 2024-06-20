@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  div.wrapper
+    div(class="links")
+      a(href="/inventory" class="header") Home
+      a(href="/inventory/categories" class="header") Categories
+      a(href="/inventory/items") Items
+    div.delete
+      h1 #{title}: #{item.name}
+      p #[strong Description]: #{item.description}
+      p #[strong Category]: #{item.category.name }
+      p #[strong Price]: £#{item.price} 
+      p #[strong Stock]: #{item.stock}
+      p #[strong Do you really want to delete this item?]
+      form(method='POST' action=item.url+"/delete")
+        div.form-group
+          input#itemid.form-control(type='hidden', name='itemid', value=item._id )
+        div.button-group
+          button(type='submit' class="button  ") Delete
+          a(href=item.url) Cancel
+
+  
+
+  
+    
